@@ -228,6 +228,117 @@ a.pure-button-selected {
 
 /*# sourceMappingURL=icon.css.map */
 
+{"version":3,"sources":["nav/nav.scss"],"names":[],"mappings":"AAKE;EAEE,aAAY;EACZ,eAAc,EACf;;AACD;EACE,YAAW,EACZ;;AAmBH;EACE,mBAAkB;EAClB,kBAjCyB;EAkCzB,qBAjC4B;EAkC5B,kDAAgD;EAChD,0BAlC2B;EAmC3B,iBAAgB,EAkBjB;EAxBD;IASI,WAAU;IACV,8BAA6B;IAC7B,sBAAqB;IACrB,yCAA6C,EAC9C;EAbH;IAgBI,aAAY;IACZ,mBAAkB;IAClB,kBAAiB;IACjB,oBAAmB;IACnB,mBAAkB;IAClB,mBAAkB;IAClB,kBAAiB,EAClB;;AAGH;EACE,mBAAkB;EAClB,UAAS;EACT,YAAW;EACX,UAAS;EACT,gBAAe;EACf,iBAAgB;EAChB,eAAc;EACd,oCAA2B;UAA3B,4BAA2B,EAS5B;EAjBD;IAzCE,YAAW;IACX,uCAAsC;IAEtC,+BAA8B,EAsD7B;IAhBH;MAlCE,YAAW;MACX,YAAW,EAgDR;;AAIL;EAEI,mBAAkB;EAClB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,YAAW;EACX,YAAW,EAIZ;EAXH;IASM,WAAU,EACX;;AAVL;EAcI,mBAAkB;EAClB,UAAS;EACT,SAAQ;EACR,QAAO;EACP,YAAW;EACX,UAAS;EACT,iBAAgB;EAChB,0BA/FyB;EAgGzB,WAAU,EAKX;EA3BH;IAwBM,aAAY;IACZ,WAAU,EACX;;AA1BL;EA8BI,eAAc;EACd,mBAAkB;EAClB,gBAAe;EA5FjB,YAAW;EACX,uCAAsC;EAEtC,+BAA8B,EAgG7B;EAvCH;IArDE,YAAW;IACX,YAAW,EA0FR;;AAIL;EACE;IACE,iBAAgB;IAChB,YAAW;IACX,iBAAgB;IAChB,iCAAwB;YAAxB,yBAAwB,EACzB;EAED;IACE,YAAW;IACX,mBAAkB,EAuBnB;IAzBD;MAII,cAAa,EACd;IALH;MAQI,iBAAgB;MAChB,eAAc;MACd,aAAY;MACZ,8BAA6B;MAC7B,WAAU,EACX;IAbH;MAgBI,mBAAkB;MAClB,sBAAqB;MACrB,gBAAe;MACf,gBAAe,EAKhB;MAxBH;QAqBM,aAAY;QACZ,qBAAoB,EACrB,EAAA","file":"nav.css","sourcesContent":["$masthead-padding-top: 15px;\n$masthead-padding-bottom: 15px;\n$header-nav-bk-color: #3c3939;\n\n@mixin clearfix() {\n  &:before,\n  &:after {\n    content: \" \";\n    display: table;\n  }\n  &:after {\n    clear: both;\n  }\n}\n\n@mixin nav-link() {\n  color: #fff;\n  -webkit-transition: opacity .2s linear;\n  -o-transition: opacity .2s linear;\n  transition: opacity .2s linear;\n}\n\n@mixin nav-link-active() {\n  color: #fff;\n  opacity: .5;\n}\n\n.clearfix {\n  @include clearfix();\n}\n\n.nav-bar {\n  position: relative;\n  padding-top: $masthead-padding-top;\n  padding-bottom: $masthead-padding-bottom;\n  border-bottom: 1px solid rgba(255, 255, 255, .1);\n  background-color: $header-nav-bk-color;\n  min-height: 52px;\n\n  a {\n    outline: 0;\n    background-color: transparent;\n    text-decoration: none;\n    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  }\n\n  .container {\n    height: 1rem;\n    position: relative;\n    max-width: 1400px;\n    padding-right: 20px;\n    padding-left: 20px;\n    margin-right: auto;\n    margin-left: auto;\n  }\n}\n\n.nav-title {\n  position: absolute;\n  left: 50%;\n  z-index: 20;\n  margin: 0;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 1;\n  transform: translateX(-50%);\n\n  a {\n    @include nav-link();\n    &:active,\n    &:focus {\n      @include nav-link-active();\n    }\n  }\n}\n\n.nav-content {\n  .nav-trigger {\n    position: absolute;\n    top: -.5rem;\n    right: 1.5rem;\n    font-size: 28px;\n    color: #fff;\n    opacity: .7;\n    &.active {\n      opacity: 1;\n    }\n  }\n\n  .nav-group {\n    position: absolute;\n    top: 37px;\n    right: 0;\n    left: 0;\n    z-index: 20;\n    height: 0;\n    overflow: hidden;\n    background-color: $header-nav-bk-color;\n    opacity: 0;\n    &.active {\n      height: auto;\n      opacity: 1;\n    }\n  }\n\n  .nav-item {\n    display: block;\n    padding: 20px 15px;\n    font-size: 14px;\n\n    @include nav-link();\n    &:active,\n    &:focus {\n      @include nav-link-active();\n    }\n  }\n}\n\n@media screen and (min-width: 768px) {\n  .nav-title {\n    position: static;\n    float: left;\n    font-weight: 300;\n    transform: translateX(0);\n  }\n\n  .nav-content {\n    float: left;\n    margin-left: 100px;\n    .nav-trigger {\n      display: none;\n    }\n\n    .nav-group {\n      position: static;\n      display: block;\n      height: auto;\n      background-color: transparent;\n      opacity: 1;\n    }\n\n    .nav-item {\n      position: relative;\n      display: inline-block;\n      padding: 0 15px;\n      font-size: 16px;\n      &:after {\n        content: ' ';\n        border-bottom: green;\n      }\n    }\n  }\n}"]}
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.nav-bar {
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #3c3939;
+  min-height: 52px; }
+  .nav-bar a {
+    outline: 0;
+    background-color: transparent;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent; }
+  .nav-bar .container {
+    height: 1rem;
+    position: relative;
+    max-width: 1400px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto; }
+
+.nav-title {
+  position: absolute;
+  left: 50%;
+  z-index: 20;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+  .nav-title a {
+    color: #fff;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear; }
+    .nav-title a:active, .nav-title a:focus {
+      color: #fff;
+      opacity: .5; }
+
+.nav-content .nav-trigger {
+  position: absolute;
+  top: -.5rem;
+  right: 1.5rem;
+  font-size: 28px;
+  color: #fff;
+  opacity: .7; }
+  .nav-content .nav-trigger.active {
+    opacity: 1; }
+
+.nav-content .nav-group {
+  position: absolute;
+  top: 37px;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  height: 0;
+  overflow: hidden;
+  background-color: #3c3939;
+  opacity: 0; }
+  .nav-content .nav-group.active {
+    height: auto;
+    opacity: 1; }
+
+.nav-content .nav-item {
+  display: block;
+  padding: 20px 15px;
+  font-size: 14px;
+  color: #fff;
+  -webkit-transition: opacity .2s linear;
+  transition: opacity .2s linear; }
+  .nav-content .nav-item:active, .nav-content .nav-item:focus {
+    color: #fff;
+    opacity: .5; }
+
+@media screen and (min-width: 768px) {
+  .nav-title {
+    position: static;
+    float: left;
+    font-weight: 300;
+    -webkit-transform: translateX(0);
+            transform: translateX(0); }
+  .nav-content {
+    float: left;
+    margin-left: 100px; }
+    .nav-content .nav-trigger {
+      display: none; }
+    .nav-content .nav-group {
+      position: static;
+      display: block;
+      height: auto;
+      background-color: transparent;
+      opacity: 1; }
+    .nav-content .nav-item {
+      position: relative;
+      display: inline-block;
+      padding: 0 15px;
+      font-size: 16px; }
+      .nav-content .nav-item:after {
+        content: ' ';
+        border-bottom: green; } }
+
+/*# sourceMappingURL=nav.css.map */
+
 {"version":3,"sources":["menu/menus-core.scss"],"names":[],"mappings":"AAAA;EACE,+BAAsB;UAAtB,uBAAsB,EACvB;;AAED;EACE,gBAAe;EACf,QAAO;EACP,OAAM;EACN,WAAU,EACX;;AAED;;EAEE,mBAAkB,EACnB;;AAED;EACE,iBAAgB;EAChB,UAAS;EACT,WAAU,EACX;;AAED;EACE,WAAU;EACV,UAAS;EACT,aAAY,EACb;;AAED;;EAEE,eAAc;EACd,sBAAqB;EACrB,oBAAmB,EACpB","file":"menus-core.css","sourcesContent":[".pure-menu {\n  box-sizing: border-box;\n}\n\n.pure-menu-fixed {\n  position: fixed;\n  left: 0;\n  top: 0;\n  z-index: 3;\n}\n\n.pure-menu-list,\n.pure-menu-item {\n  position: relative;\n}\n\n.pure-menu-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n.pure-menu-item {\n  padding: 0;\n  margin: 0;\n  height: 100%;\n}\n\n.pure-menu-link,\n.pure-menu-heading {\n  display: block;\n  text-decoration: none;\n  white-space: nowrap;\n}"]}
 .pure-menu {
   -webkit-box-sizing: border-box;
@@ -354,116 +465,39 @@ a.pure-button-selected {
 
 /*# sourceMappingURL=menus-skin.css.map */
 
-{"version":3,"sources":["nav/nav.scss"],"names":[],"mappings":"AAKE;EAEE,aAAY;EACZ,eAAc,EACf;;AACD;EACE,YAAW,EACZ;;AAmBH;EACE,mBAAkB;EAClB,kBAjCyB;EAkCzB,qBAjC4B;EAkC5B,kDAAgD;EAChD,0BAlC2B;EAmC3B,iBAAgB,EAkBjB;EAxBD;IASI,WAAU;IACV,8BAA6B;IAC7B,sBAAqB;IACrB,yCAA6C,EAC9C;EAbH;IAgBI,aAAY;IACZ,mBAAkB;IAClB,kBAAiB;IACjB,oBAAmB;IACnB,mBAAkB;IAClB,mBAAkB;IAClB,kBAAiB,EAClB;;AAGH;EACE,mBAAkB;EAClB,UAAS;EACT,YAAW;EACX,UAAS;EACT,gBAAe;EACf,iBAAgB;EAChB,eAAc;EACd,oCAA2B;UAA3B,4BAA2B,EAS5B;EAjBD;IAzCE,YAAW;IACX,uCAAsC;IAEtC,+BAA8B,EAsD7B;IAhBH;MAlCE,YAAW;MACX,YAAW,EAgDR;;AAIL;EAEI,mBAAkB;EAClB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,YAAW;EACX,YAAW,EAIZ;EAXH;IASM,WAAU,EACX;;AAVL;EAcI,mBAAkB;EAClB,UAAS;EACT,SAAQ;EACR,QAAO;EACP,YAAW;EACX,UAAS;EACT,iBAAgB;EAChB,0BA/FyB;EAgGzB,WAAU,EAKX;EA3BH;IAwBM,aAAY;IACZ,WAAU,EACX;;AA1BL;EA8BI,eAAc;EACd,mBAAkB;EAClB,gBAAe;EA5FjB,YAAW;EACX,uCAAsC;EAEtC,+BAA8B,EAgG7B;EAvCH;IArDE,YAAW;IACX,YAAW,EA0FR;;AAIL;EACE;IACE,iBAAgB;IAChB,YAAW;IACX,iBAAgB;IAChB,iCAAwB;YAAxB,yBAAwB,EACzB;EAED;IACE,YAAW;IACX,mBAAkB,EAuBnB;IAzBD;MAII,cAAa,EACd;IALH;MAQI,iBAAgB;MAChB,eAAc;MACd,aAAY;MACZ,8BAA6B;MAC7B,WAAU,EACX;IAbH;MAgBI,mBAAkB;MAClB,sBAAqB;MACrB,gBAAe;MACf,gBAAe,EAKhB;MAxBH;QAqBM,aAAY;QACZ,qBAAoB,EACrB,EAAA","file":"nav.css","sourcesContent":["$masthead-padding-top: 15px;\n$masthead-padding-bottom: 15px;\n$header-nav-bk-color: #3c3939;\n\n@mixin clearfix() {\n  &:before,\n  &:after {\n    content: \" \";\n    display: table;\n  }\n  &:after {\n    clear: both;\n  }\n}\n\n@mixin nav-link() {\n  color: #fff;\n  -webkit-transition: opacity .2s linear;\n  -o-transition: opacity .2s linear;\n  transition: opacity .2s linear;\n}\n\n@mixin nav-link-active() {\n  color: #fff;\n  opacity: .5;\n}\n\n.clearfix {\n  @include clearfix();\n}\n\n.nav-bar {\n  position: relative;\n  padding-top: $masthead-padding-top;\n  padding-bottom: $masthead-padding-bottom;\n  border-bottom: 1px solid rgba(255, 255, 255, .1);\n  background-color: $header-nav-bk-color;\n  min-height: 52px;\n\n  a {\n    outline: 0;\n    background-color: transparent;\n    text-decoration: none;\n    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  }\n\n  .container {\n    height: 1rem;\n    position: relative;\n    max-width: 1400px;\n    padding-right: 20px;\n    padding-left: 20px;\n    margin-right: auto;\n    margin-left: auto;\n  }\n}\n\n.nav-title {\n  position: absolute;\n  left: 50%;\n  z-index: 20;\n  margin: 0;\n  font-size: 22px;\n  font-weight: 400;\n  line-height: 1;\n  transform: translateX(-50%);\n\n  a {\n    @include nav-link();\n    &:active,\n    &:focus {\n      @include nav-link-active();\n    }\n  }\n}\n\n.nav-content {\n  .nav-trigger {\n    position: absolute;\n    top: -.5rem;\n    right: 1.5rem;\n    font-size: 28px;\n    color: #fff;\n    opacity: .7;\n    &.active {\n      opacity: 1;\n    }\n  }\n\n  .nav-group {\n    position: absolute;\n    top: 37px;\n    right: 0;\n    left: 0;\n    z-index: 20;\n    height: 0;\n    overflow: hidden;\n    background-color: $header-nav-bk-color;\n    opacity: 0;\n    &.active {\n      height: auto;\n      opacity: 1;\n    }\n  }\n\n  .nav-item {\n    display: block;\n    padding: 20px 15px;\n    font-size: 14px;\n\n    @include nav-link();\n    &:active,\n    &:focus {\n      @include nav-link-active();\n    }\n  }\n}\n\n@media screen and (min-width: 768px) {\n  .nav-title {\n    position: static;\n    float: left;\n    font-weight: 300;\n    transform: translateX(0);\n  }\n\n  .nav-content {\n    float: left;\n    margin-left: 100px;\n    .nav-trigger {\n      display: none;\n    }\n\n    .nav-group {\n      position: static;\n      display: block;\n      height: auto;\n      background-color: transparent;\n      opacity: 1;\n    }\n\n    .nav-item {\n      position: relative;\n      display: inline-block;\n      padding: 0 15px;\n      font-size: 16px;\n      &:after {\n        content: ' ';\n        border-bottom: green;\n      }\n    }\n  }\n}"]}
-.clearfix:before, .clearfix:after {
-  content: " ";
-  display: table; }
-
-.clearfix:after {
-  clear: both; }
-
-.nav-bar {
+{"version":3,"sources":["ripple/ripple.scss"],"names":[],"mappings":"AAAA;EACE,mBAAkB;EAClB,iBAAgB;EAChB,wCAA+B;UAA/B,gCAA+B,EAwBhC;EA3BD;IAMI,YAAW;IACX,eAAc;IACd,mBAAkB;IAClB,YAAW;IACX,aAAY;IACZ,OAAM;IACN,QAAO;IACP,qBAAoB;IACpB,wEAAuE;IACvE,6BAA4B;IAC5B,yBAAwB;IACxB,iCAAuB;YAAvB,yBAAuB;IACvB,WAAU;IACV,sDAAqC;IAArC,8CAAqC;IAArC,sCAAqC;IAArC,6DAAqC,EACtC;EApBH;IAuBI,+BAAqB;YAArB,uBAAqB;IACrB,YAAW;IACX,uBAAc;IAAd,eAAc,EACf","file":"ripple.css","sourcesContent":[".ripple {\n  position: relative;\n  overflow: hidden;\n  transform: translate3d(0, 0, 0);\n\n  &:after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    pointer-events: none;\n    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);\n    background-repeat: no-repeat;\n    background-position: 50%;\n    transform: scale(10,10);\n    opacity: 0;\n    transition: transform .5s, opacity 1s;\n  }\n\n  &:active:after {\n    transform: scale(0,0);\n    opacity: .2;\n    transition: 0s;\n  }\n}"]}
+.ripple {
   position: relative;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: #3c3939;
-  min-height: 52px; }
-  .nav-bar a {
-    outline: 0;
-    background-color: transparent;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent; }
-  .nav-bar .container {
-    height: 1rem;
-    position: relative;
-    max-width: 1400px;
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-right: auto;
-    margin-left: auto; }
-
-.nav-title {
-  position: absolute;
-  left: 50%;
-  z-index: 20;
-  margin: 0;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%); }
-  .nav-title a {
-    color: #fff;
-    -webkit-transition: opacity .2s linear;
-    transition: opacity .2s linear; }
-    .nav-title a:active, .nav-title a:focus {
-      color: #fff;
-      opacity: .5; }
-
-.nav-content .nav-trigger {
-  position: absolute;
-  top: -.5rem;
-  right: 1.5rem;
-  font-size: 28px;
-  color: #fff;
-  opacity: .7; }
-  .nav-content .nav-trigger.active {
-    opacity: 1; }
-
-.nav-content .nav-group {
-  position: absolute;
-  top: 37px;
-  right: 0;
-  left: 0;
-  z-index: 20;
-  height: 0;
   overflow: hidden;
-  background-color: #3c3939;
-  opacity: 0; }
-  .nav-content .nav-group.active {
-    height: auto;
-    opacity: 1; }
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
+  .ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    -webkit-transform: scale(10, 10);
+            transform: scale(10, 10);
+    opacity: 0;
+    -webkit-transition: opacity 1s, -webkit-transform .5s;
+    transition: opacity 1s, -webkit-transform .5s;
+    transition: transform .5s, opacity 1s;
+    transition: transform .5s, opacity 1s, -webkit-transform .5s; }
+  .ripple:active:after {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+    opacity: .2;
+    -webkit-transition: 0s;
+    transition: 0s; }
 
-.nav-content .nav-item {
-  display: block;
-  padding: 20px 15px;
-  font-size: 14px;
-  color: #fff;
-  -webkit-transition: opacity .2s linear;
-  transition: opacity .2s linear; }
-  .nav-content .nav-item:active, .nav-content .nav-item:focus {
-    color: #fff;
-    opacity: .5; }
-
-@media screen and (min-width: 768px) {
-  .nav-title {
-    position: static;
-    float: left;
-    font-weight: 300;
-    -webkit-transform: translateX(0);
-            transform: translateX(0); }
-  .nav-content {
-    float: left;
-    margin-left: 100px; }
-    .nav-content .nav-trigger {
-      display: none; }
-    .nav-content .nav-group {
-      position: static;
-      display: block;
-      height: auto;
-      background-color: transparent;
-      opacity: 1; }
-    .nav-content .nav-item {
-      position: relative;
-      display: inline-block;
-      padding: 0 15px;
-      font-size: 16px; }
-      .nav-content .nav-item:after {
-        content: ' ';
-        border-bottom: green; } }
-
-/*# sourceMappingURL=nav.css.map */
+/*# sourceMappingURL=ripple.css.map */
 
 {"version":3,"sources":["tables/tables.scss"],"names":[],"mappings":"AAAA;EACE,6DAA6D;EAC7D,0BAAyB;EACzB,kBAAiB;EACjB,kBAAiB;EACjB,0BAAyB,EAC1B;;AAED;EACE,YAAW;EACX,qCAAoC;EACpC,eAAc;EACd,mBAAkB,EACnB;;AAED;;EAEE,+BAA8B;EAAE,0BAA0B;EAC1D,wBAAuB;EACvB,mBAAkB;EAClB,UAAS;EACT,kBAAiB;EAAG,mDAAmD;EACvE,mBAAkB;EAAG,kBAAkB,EACxC;;AAED;0EAC0E;AAC1E;;EAEE,qBAAoB,EACrB;;AAED;EACE,0BAAyB;EACzB,YAAW;EACX,iBAAgB;EAChB,uBAAsB,EACvB;;AAED;;;;EAIE;AACF;EACE,8BAA6B,EAC9B;;AACD;EACE,0BAAyB,EAC1B;;AAED,4CAA4C;AAC5C;EACE,0BAAyB,EAC1B;;AAED,qBAAqB;AACrB;EACE,iCAAgC,EACjC;;AACD;EACE,uBAAsB,EACvB;;AAGD,gCAAgC;AAEhC;;EAEE,wBAAuB;EACvB,iCAAgC,EACjC;;AACD;EACE,uBAAsB,EACvB","file":"tables.css","sourcesContent":[".pure-table {\n  /* Remove spacing between table cells (from Normalize.css) */\n  border-collapse: collapse;\n  border-spacing: 0;\n  empty-cells: show;\n  border: 1px solid #cbcbcb;\n}\n\n.pure-table caption {\n  color: #000;\n  font: italic 85%/1 arial, sans-serif;\n  padding: 1em 0;\n  text-align: center;\n}\n\n.pure-table td,\n.pure-table th {\n  border-left: 1px solid #cbcbcb;/*  inner column border */\n  border-width: 0 0 0 1px;\n  font-size: inherit;\n  margin: 0;\n  overflow: visible; /*to make ths where the title is really long work*/\n  padding: 0.5em 1em; /* cell padding */\n}\n\n/* Consider removing this next declaration block, as it causes problems when\nthere's a rowspan on the first cell. Case added to the tests. issue#432 */\n.pure-table td:first-child,\n.pure-table th:first-child {\n  border-left-width: 0;\n}\n\n.pure-table thead {\n  background-color: #e0e0e0;\n  color: #000;\n  text-align: left;\n  vertical-align: bottom;\n}\n\n/*\nstriping:\n   even - #fff (white)\n   odd  - #f2f2f2 (light gray)\n*/\n.pure-table td {\n  background-color: transparent;\n}\n.pure-table-odd td {\n  background-color: #f2f2f2;\n}\n\n/* nth-child selector for modern browsers */\n.pure-table-striped tr:nth-child(2n-1) td {\n  background-color: #f2f2f2;\n}\n\n/* BORDERED TABLES */\n.pure-table-bordered td {\n  border-bottom: 1px solid #cbcbcb;\n}\n.pure-table-bordered tbody > tr:last-child > td {\n  border-bottom-width: 0;\n}\n\n\n/* HORIZONTAL BORDERED TABLES */\n\n.pure-table-horizontal td,\n.pure-table-horizontal th {\n  border-width: 0 0 1px 0;\n  border-bottom: 1px solid #cbcbcb;\n}\n.pure-table-horizontal tbody > tr:last-child > td {\n  border-bottom-width: 0;\n}"]}
 .pure-table {
