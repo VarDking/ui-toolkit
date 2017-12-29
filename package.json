@@ -1,0 +1,26 @@
+{
+  "name": "ui-toolkit",
+  "version": "1.0.0",
+  "description": "another ui toolkit",
+  "main": "gulpfile.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.chenmingtian.com:29540/vardking/ui-toolkit.git"
+  },
+  "keywords": [
+    "ui",
+    "css"
+  ],
+  "author": "vardking",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^7.2.2",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1"
+  }
+}
