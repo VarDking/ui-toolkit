@@ -5,11 +5,13 @@ const sass       = require('gulp-sass');
 const concat     = require('gulp-concat');
 const postcss    = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
+const babel      = require('gulp-babel');
 
 const autoprefixer = require('autoprefixer');
 
-gulp.task('default', ['clean', 'sass'/*, 'webpack'*/], function () {
+gulp.task('default', ['clean', 'sass', 'compile-js'], function () {
     gulp.watch('./src/**/*.scss', ['sass']);
+    gulp.watch('./src/**/*.js', ['compile-js']);
 });
 
 gulp.task('clean', function () {
@@ -25,4 +27,13 @@ gulp.task('sass', function () {
     .pipe(sourcemaps.write('.'))
     .pipe(concat('all.css'))
     .pipe(gulp.dest('./dist/css'));
+});
+
+
+gulp.task('compile-js', function () {
+    return gulp.src('./src/**/*.js')
+    .pipe(babel({
+        presets: ['env']
+    }))
+    .pipe(gulp.dest('./dist/js'))
 });

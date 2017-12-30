@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "ssh://git@git.chenmingtian.com:29540/vardking/ui-toolkit.git"
+    "url": "git@github.com:VarDking/ui-toolkit.git"
   },
   "keywords": [
     "ui",
@@ -22,5 +22,11 @@
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
+    "babel-preset-env": "^1.6.1",
+    "gulp-babel": "^7.0.0"
   }
 }
