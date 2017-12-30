@@ -17,7 +17,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('sass', function () {
-    return gulp.src('./src/**/*.scss')
+    return gulp.src('./src/all.scss')
     .pipe(sourcemaps.init())
     //.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(sass({outputStyle: 'expand'}).on('error', sass.logError))
